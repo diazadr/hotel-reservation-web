@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', '/sekolah_oop_mvc/public/');
+define('BASE_URL', '/reservasi-hotel/public/');
 ?>
 <!DOCTYPE html>
 <html lang="en">

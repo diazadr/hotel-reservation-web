@@ -1,60 +1,52 @@
 <?php
-class KamarModel {
-    private $conn;
-    private $table = 'kamar';
+include_once '../app/models/KamarModel.php';
 
-    public $id_kamar;
-    public $nomor_kamar;
-    public $tipe_kamar;
-    public $status_kamar;
+class KamarController {
+    private $model;
 
     public function __construct($db) {
-        $this->conn = $db;
+        $this->model = new KamarModel($db);
     }
 
-    public function getAll() {
-        $query = "SELECT * FROM " . $this->table;
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-
-    public function getById($id) {
-        $query = "SELECT * FROM " . $this->table . " WHERE id_kamar = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $id);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    public function index() {
+        $result = $this->model->getAll();
+        include '../app/views/kamar/index.php';
     }
 
     public function create() {
-        $query = "INSERT INTO " . $this->table . " (nomor_kamar, tipe_kamar, status_kamar) 
-                  VALUES (:nomor_kamar, :tipe_kamar, :status_kamar)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':nomor_kamar', $this->nomor_kamar);
-        $stmt->bindParam(':tipe_kamar', $this->tipe_kamar);
-        $stmt->bindParam(':status_kamar', $this->status_kamar);
-        return $stmt->execute();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->model->nomor_kamar = $_POST['nomor_kamar'];
+            $this->model->tipe_kamar = $_POST['tipe_kamar'];
+            $this->model->status_kamar = $_POST['status_kamar'];
+            if ($this->model->create()) {
+                header("Location: /reservasi-hotel/public/kamar");
+                exit;
+            }
+        }
+        include '../app/views/kamar/tambah.php';
     }
 
-    public function update() {
-        $query = "UPDATE " . $this->table . " 
-                  SET nomor_kamar = :nomor_kamar, tipe_kamar = :tipe_kamar, 
-                      status_kamar = :status_kamar 
-                  WHERE id_kamar = :id_kamar";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':nomor_kamar', $this->nomor_kamar);
-        $stmt->bindParam(':tipe_kamar', $this->tipe_kamar);
-        $stmt->bindParam(':status_kamar', $this->status_kamar);
-        $stmt->bindParam(':id_kamar', $this->id_kamar);
-        return $stmt->execute();
+    public function edit($id) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->model->id_kamar = $id;
+            $this->model->nomor_kamar = $_POST['nomor_kamar'];
+            $this->model->tipe_kamar = $_POST['tipe_kamar'];
+            $this->model->status_kamar = $_POST['status_kamar'];
+            if ($this->model->update()) {
+                header("Location: /reservasi-hotel/public/kamar");
+                exit;
+            }
+        }
+        $kamar = $this->model->getById($id);
+        include '../app/views/kamar/edit.php';
     }
 
-    public function delete() {
-        $query = "DELETE FROM " . $this->table . " WHERE id_kamar = :id_kamar";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id_kamar', $this->id_kamar);
-        return $stmt->execute();
+    public function delete($id) {
+        $this->model->id_kamar = $id;
+        if ($this->model->delete()) {
+            header("Location: /reservasi-hotel/public/kamar");
+            exit;
+        }
     }
 }
 ?>

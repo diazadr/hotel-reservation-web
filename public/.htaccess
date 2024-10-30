@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /sekolah_oop_mvc/public/
+    RewriteBase /reservasi-hotel/public/
     
     # Redirect all requests to index.php except for existing files and directories
     RewriteCond %{REQUEST_FILENAME} !-f

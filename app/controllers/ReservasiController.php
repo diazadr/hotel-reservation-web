@@ -29,7 +29,7 @@ class ReservasiController {
 
             if ($this->model->create()) {
                 $_SESSION['flash_message'] = "Reservasi berhasil ditambahkan.";
-                header("Location: /hotel_management/public/reservasi");
+                header("Location: /reservasi-hotel/public/reservasi");
                 exit;
             }
         }
@@ -50,7 +50,7 @@ class ReservasiController {
             $this->model->status_reservasi = $_POST['status_reservasi'];
 
             if ($this->model->update()) {
-                header("Location: /hotel_management/public/reservasi");
+                header("Location: /reservasi-hotel/public/reservasi");
                 exit;
             }
         }
@@ -65,7 +65,7 @@ class ReservasiController {
     public function delete($id) {
         $this->model->id_reservasi = $id;
         if ($this->model->delete()) {
-            header("Location: /hotel_management/public/reservasi");
+            header("Location: /reservasi-hotel/public/reservasi");
         }
     }
 }
