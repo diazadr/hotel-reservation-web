@@ -1,7 +1,9 @@
 <?php include '../app/templates/header.php'; ?>
 
 <h3 class="center-align">Daftar Reservasi</h3>
-<a href="<?php echo BASE_URL; ?>reservasi/tambah" class="btn waves-effect waves-light blue">Tambah Reservasi</a>
+<div class="row">
+    <a href="<?php echo BASE_URL; ?>reservasi/tambah" class="btn waves-effect waves-light blue">Tambah Reservasi</a>
+</div>
 
 <table class="highlight centered">
     <thead>
