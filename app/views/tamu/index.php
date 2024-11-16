@@ -1,14 +1,16 @@
-<?php include '../app/templates/header.php'; ?>
+<?php include 'app/templates/header.php'; ?>
 
-<h3 class="center-align">Daftar Tamu</h3>
-<div class="row">
-    <a href="<?php echo BASE_URL; ?>tamu/tambah" class="btn waves-effect waves-light blue">Tambah Tamu</a>
+<h3 class="text-center my-4">Daftar Tamu</h3>
+
+<div class="mb-3">
+    <a href="<?php echo BASE_URL; ?>tamu/tambah" class="btn btn-primary">Tambah Tamu</a>
+    <a href="<?php echo BASE_URL; ?>" class="btn btn-success">Kembali</a>
 </div>
 
-<table class="highlight centered">
+<table class="table table-hover text-center">
     <thead>
         <tr>
-            <th>ID</th>
+        <th>ID</th>
             <th>Nama Tamu</th>
             <th>Kontak</th>
             <th>Alamat</th>
@@ -23,12 +25,12 @@
                 <td><?php echo $row['kontak_tamu']; ?></td>
                 <td><?php echo $row['alamat_tamu']; ?></td>
                 <td>
-                    <a href="<?php echo BASE_URL; ?>tamu/edit/<?php echo $row['id_tamu']; ?>" class="btn-small orange">Edit</a>
-                    <a href="<?php echo BASE_URL; ?>tamu/hapus/<?php echo $row['id_tamu']; ?>" class="btn-small red" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                    <a href="<?php echo BASE_URL; ?>tamu/edit/<?php echo $row['id_tamu']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="<?php echo BASE_URL; ?>tamu/hapus/<?php echo $row['id_tamu']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                 </td>
             </tr>
         <?php endwhile; ?>
     </tbody>
 </table>
 
-<?php include '../app/templates/footer.php'; ?>
+<?php include 'app/templates/footer.php'; ?>

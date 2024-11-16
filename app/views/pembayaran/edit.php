@@ -1,41 +1,38 @@
-<?php include '../app/templates/header.php'; ?>
+<?php include 'app/templates/header.php'; ?>
 
-<h4 class="center-align">Edit Pembayaran</h4>
+<h4 class="text-center my-4">Edit Pembayaran</h4>
 
-<div class="row">
-    <form class="col s12" method="POST" action="<?php echo BASE_URL; ?>pembayaran/edit/<?php echo $pembayaran['id_pembayaran']; ?>">
-        <div class="input-field col s12">
-            <select name="id_reservasi" required>
+<div class="container">
+    <form method="POST" action="<?php echo BASE_URL; ?>pembayaran/edit/<?php echo $pembayaran['id_pembayaran']; ?>">
+        <div class="mb-3">
+            <label for="id_reservasi" class="form-label">Reservasi</label>
+            <select id="id_reservasi" name="id_reservasi" class="form-select" required>
                 <?php foreach ($reservasi_list as $reservasi): ?>
-                    <option value="<?php echo $reservasi['id_reservasi']; ?>" <?php echo ($reservasi['id_reservasi'] == $pembayaran['id_reservasi']) ? 'selected' : ''; ?>><?php echo $reservasi['id_reservasi']; ?></option>
+                    <option value="<?php echo $reservasi['id_reservasi']; ?>" <?php echo ($reservasi['id_reservasi'] == $pembayaran['id_reservasi']) ? 'selected' : ''; ?>>
+                        <?php echo $reservasi['id_reservasi']; ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
-            <label>Reservasi</label>
         </div>
-
-        <div class="input-field col s12">
-            <input type="date" name="tanggal_pembayaran" value="<?php echo $pembayaran['tanggal_pembayaran']; ?>" required>
-            <label for="tanggal_pembayaran">Tanggal Pembayaran</label>
+        <div class="mb-3">
+            <label for="tanggal_pembayaran" class="form-label">Tanggal Pembayaran</label>
+            <input type="date" id="tanggal_pembayaran" name="tanggal_pembayaran" class="form-control" value="<?php echo $pembayaran['tanggal_pembayaran']; ?>" required>
         </div>
-
-        <div class="input-field col s12">
-            <select name="metode_pembayaran" required>
+        <div class="mb-3">
+            <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
+            <select id="metode_pembayaran" name="metode_pembayaran" class="form-select" required>
                 <option value="Transfer" <?php echo ($pembayaran['metode_pembayaran'] == 'Transfer') ? 'selected' : ''; ?>>Transfer</option>
                 <option value="Kartu Kredit" <?php echo ($pembayaran['metode_pembayaran'] == 'Kartu Kredit') ? 'selected' : ''; ?>>Kartu Kredit</option>
                 <option value="Tunai" <?php echo ($pembayaran['metode_pembayaran'] == 'Tunai') ? 'selected' : ''; ?>>Tunai</option>
             </select>
-            <label>Metode Pembayaran</label>
         </div>
-
-        <div class="input-field col s12">
-            <input type="number" name="jumlah_pembayaran" value="<?php echo $pembayaran['jumlah_pembayaran']; ?>" required>
-            <label for="jumlah_pembayaran">Jumlah Pembayaran</label>
+        <div class="mb-3">
+            <label for="jumlah_pembayaran" class="form-label">Jumlah Pembayaran</label>
+            <input type="number" id="jumlah_pembayaran" name="jumlah_pembayaran" class="form-control" value="<?php echo $pembayaran['jumlah_pembayaran']; ?>" required>
         </div>
-
-        <button type="submit" class="btn waves-effect waves-light blue">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="<?php echo BASE_URL; ?>pembayaran" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 
-<a href="<?php echo BASE_URL; ?>pembayaran" class="btn waves-effect waves-light grey">Kembali</a>
-
-<?php include '../app/templates/footer.php'; ?>
+<?php include 'app/templates/footer.php'; ?>

@@ -1,5 +1,5 @@
 <?php
-include_once '../app/models/KamarModel.php';
+include_once 'app/models/KamarModel.php';
 
 class KamarController {
     private $model;
@@ -10,7 +10,7 @@ class KamarController {
 
     public function index() {
         $result = $this->model->getAll();
-        include '../app/views/kamar/index.php';
+        include 'app/views/kamar/index.php';
     }
 
     public function create() {
@@ -19,11 +19,11 @@ class KamarController {
             $this->model->tipe_kamar = $_POST['tipe_kamar'];
             $this->model->status_kamar = $_POST['status_kamar'];
             if ($this->model->create()) {
-                header("Location: /reservasi-hotel/public/kamar");
+                header("Location: /reservasi-hotel/kamar");
                 exit;
             }
         }
-        include '../app/views/kamar/tambah.php';
+        include 'app/views/kamar/tambah.php';
     }
 
     public function edit($id) {
@@ -33,18 +33,18 @@ class KamarController {
             $this->model->tipe_kamar = $_POST['tipe_kamar'];
             $this->model->status_kamar = $_POST['status_kamar'];
             if ($this->model->update()) {
-                header("Location: /reservasi-hotel/public/kamar");
+                header("Location: /reservasi-hotel/kamar");
                 exit;
             }
         }
         $kamar = $this->model->getById($id);
-        include '../app/views/kamar/edit.php';
+        include 'app/views/kamar/edit.php';
     }
 
     public function delete($id) {
         $this->model->id_kamar = $id;
         if ($this->model->delete()) {
-            header("Location: /reservasi-hotel/public/kamar");
+            header("Location: /reservasi-hotel/kamar");
             exit;
         }
     }

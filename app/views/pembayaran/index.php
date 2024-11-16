@@ -1,37 +1,40 @@
-<?php include '../app/templates/header.php'; ?>
+<?php include 'app/templates/header.php'; ?>
 
-<h3 class="center-align">Daftar Pembayaran</h3>
-<div class="row">
+<h3 class="text-center my-4">Daftar Pembayaran</h3>
 
-    <a href="<?php echo BASE_URL; ?>pembayaran/tambah" class="btn waves-effect waves-light blue">Tambah Pembayaran</a>
+<div class="mb-3">
+    <a href="<?php echo BASE_URL; ?>pembayaran/tambah" class="btn btn-primary">Tambah Pembayaran</a>
+    <a href="<?php echo BASE_URL; ?>" class="btn btn-success">Kembali</a>
 </div>
 
-<table class="highlight centered">
-    <thead>
-        <tr>
-            <th>ID Pembayaran</th>
-            <th>ID Reservasi</th>
-            <th>Tanggal Pembayaran</th>
-            <th>Metode Pembayaran</th>
-            <th>Jumlah Pembayaran</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
+<div class="container">
+    <table class="table table-hover text-center">
+        <thead>
             <tr>
-                <td><?php echo $row['id_pembayaran']; ?></td>
-                <td><?php echo $row['id_reservasi']; ?></td>
-                <td><?php echo $row['tanggal_pembayaran']; ?></td>
-                <td><?php echo $row['metode_pembayaran']; ?></td>
-                <td><?php echo $row['jumlah_pembayaran']; ?></td>
-                <td>
-                    <a href="<?php echo BASE_URL; ?>pembayaran/edit/<?php echo $row['id_pembayaran']; ?>" class="btn-small orange">Edit</a>
-                    <a href="<?php echo BASE_URL; ?>pembayaran/hapus/<?php echo $row['id_pembayaran']; ?>" class="btn-small red" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
-                </td>
+                <th>ID Pembayaran</th>
+                <th>ID Reservasi</th>
+                <th>Tanggal Pembayaran</th>
+                <th>Metode Pembayaran</th>
+                <th>Jumlah Pembayaran</th>
+                <th>Aksi</th>
             </tr>
-        <?php endwhile; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
+                <tr>
+                    <td><?php echo $row['id_pembayaran']; ?></td>
+                    <td><?php echo $row['id_reservasi']; ?></td>
+                    <td><?php echo $row['tanggal_pembayaran']; ?></td>
+                    <td><?php echo $row['metode_pembayaran']; ?></td>
+                    <td><?php echo $row['jumlah_pembayaran']; ?></td>
+                    <td>
+                        <a href="<?php echo BASE_URL; ?>pembayaran/edit/<?php echo $row['id_pembayaran']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="<?php echo BASE_URL; ?>pembayaran/hapus/<?php echo $row['id_pembayaran']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
 
-<?php include '../app/templates/footer.php'; ?>
+<?php include 'app/templates/footer.php'; ?>
