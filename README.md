@@ -23,27 +23,27 @@ This project implements CRUD operations using Object-Oriented Programming (OOP) 
 ### Main Menu
 - The main menu where users can choose to create, view, update, or delete reservations.
 
-  <img src="https://github.com/user-attachments/assets/90311942-b3f1-4c29-bafb-a2d3cbf7f660" alt="Menu" width="500">
+  <img src="https://github.com/user-attachments/assets/90311942-b3f1-4c29-bafb-a2d3cbf7f660" alt="Menu" width="600">
 
 ### Create Reservation
 - Allows users to add new hotel room reservations.
 
-  <img src="https://github.com/user-attachments/assets/a0db2650-69b1-4b8d-a624-5fc93c9cf26a" alt="Create Reservation" width="500">
+  <img src="https://github.com/user-attachments/assets/a0db2650-69b1-4b8d-a624-5fc93c9cf26a" alt="Create Reservation" width="600">
 
 ### View Reservations
 - Displays a list of all hotel room reservations.
 
-  <img src="https://github.com/user-attachments/assets/d78bd2cf-e5ba-4cc4-88c7-c75e2bcfe102" alt="View Reservations" width="500">
+  <img src="https://github.com/user-attachments/assets/d78bd2cf-e5ba-4cc4-88c7-c75e2bcfe102" alt="View Reservations" width="600">
 
 ### Update Reservation
 - Enables users to modify existing reservations.
 
-  <img src="https://github.com/user-attachments/assets/8d3c81ca-5248-4577-9a61-ba67247a1877" alt="Update Reservation" width="400">
+  <img src="https://github.com/user-attachments/assets/8d3c81ca-5248-4577-9a61-ba67247a1877" alt="Update Reservation" width="600">
 
 ### Delete Reservation
 - Allows users to remove a reservation from the system.
 
-  <img src="https://github.com/user-attachments/assets/bec2ed5e-7302-4a19-b27b-816bcb82ed7a" alt="Delete Reservation" width="500">
+  <img src="https://github.com/user-attachments/assets/bec2ed5e-7302-4a19-b27b-816bcb82ed7a" alt="Delete Reservation" width="600">
 
 ## Setup
 1. **Clone the Repository**: Download or clone the project to your local machine.
